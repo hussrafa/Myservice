@@ -13,7 +13,7 @@ jobs:
         uses: actions/setup-dotnet@v3
 
       - name: Build
-        run: dotnet build Myservicec.sln
+        run: dotnet build Myservice.sln
       
       - name: publish
         run: dotnet publish -c Release Myservice/Myservice.csproj

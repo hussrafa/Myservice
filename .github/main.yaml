@@ -1,0 +1,41 @@
+name: dotnet package
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup dotnet 
+        uses: actions/setup-dotnet@v3
+
+      - name: Build
+        run: dotnet build Myservicec.sln
+      
+      - name: publish
+        run: dotnet publish -c Release Myservice/Myservice.csproj
+      
+      - name: release
+        uses: actions/create-release@v1
+        id: create_release
+        with:
+          draft: false
+          prerelease: false
+          release_name: v1.0.1
+          tag_name: ${{ github.ref }}
+          body_path: CHANGELOG.md
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+      
+      - name: upload  artifact
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./bin/Release/net8.0/Myservice.exe
+          asset_name: Myservice.exe
+          asset_content_type: application/gzip

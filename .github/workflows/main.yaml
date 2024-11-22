@@ -27,7 +27,7 @@ jobs:
           draft: false
           prerelease: false
           release_name: v1.0.1
-          tag_name: ${{ github.ref }}
+          tag_name: v1.0.1
           body: |
             Changes in this Release
             - First Change

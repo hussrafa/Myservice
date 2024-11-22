@@ -39,7 +39,7 @@ jobs:
             
       - uses: vimtor/action-zip@v1.2
         with:
-          files: /home/runner/work/Myservice/Myservice/Myservice/bin/Release/net8.0/
+          files: Myservice/bin/Release/net8.0/
           dest: result.zip
       
       - name: upload  artifact

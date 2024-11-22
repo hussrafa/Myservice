@@ -30,8 +30,8 @@ jobs:
         with:
           draft: false
           prerelease: false
-          release_name: v1.0.3
-          tag_name: v1.0.3
+          release_name: v1.0.4
+          tag_name: v1.0.4
           body: |
             Changes in this Release
             - First Change
@@ -39,7 +39,7 @@ jobs:
             
       - uses: vimtor/action-zip@v1.2
         with:
-          files: Myservice/bin/Release/net8.0/
+          files: Myservice/bin/Debug/net8.0/
           dest: result.zip
       
       - name: upload  artifact
